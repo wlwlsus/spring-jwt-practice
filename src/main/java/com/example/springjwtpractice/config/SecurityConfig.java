@@ -1,5 +1,6 @@
 package com.example.springjwtpractice.config;
 
+import com.example.springjwtpractice.config.jwt.JwtAuthenticationFilter;
 import com.example.springjwtpractice.filter.MyFilter1;
 import com.example.springjwtpractice.filter.MyFilter3;
 import lombok.RequiredArgsConstructor;
@@ -34,12 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						.addFilter(corsFilter) // @CrossOrigin 인증 X, 시큐리티 필터에 등록 인증 O
 						.formLogin().disable()
 						.httpBasic().disable()
+						.addFilter(new JwtAuthenticationFilter(authenticationManager())) // AuthenticationManager
 						.authorizeRequests()
 						.antMatchers("/api/v1/user/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
 						.antMatchers("/api/v1/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
 						.antMatchers("/api/v1/admin/**").access("hasRole('ROLE_ADMIN')")
 						.anyRequest().permitAll();
-
 
 	}
 }
