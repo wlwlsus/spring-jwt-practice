@@ -2,12 +2,9 @@ package com.example.springjwtpractice.config;
 
 import com.example.springjwtpractice.filter.MyFilter1;
 import com.example.springjwtpractice.filter.MyFilter2;
-import org.apache.catalina.core.ApplicationFilterRegistration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.servlet.FilterRegistration;
 
 /**
  * Created by cadqe13@gmail.com on 2022-04-15

@@ -1,6 +1,7 @@
 package com.example.springjwtpractice.config.auth;
 
 import com.example.springjwtpractice.model.User;
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,21 +13,21 @@ import java.util.Collection;
  * Blog : https://velog.io/@donsco
  * GitHub : https://github.com/wlwlsus
  */
-public class PrincipalDetail implements UserDetails {
+@Data
+public class PrincipalDetails implements UserDetails {
 
 	private User user;
 
-	public PrincipalDetail(User user) {
+	public PrincipalDetails(User user) {
 		this.user = user;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> authorities = new ArrayList<>();
-		user.getRoleList().forEach(role -> authorities.add(() -> role));
+		user.getRoleList().forEach(r -> authorities.add(()-> r));
 		return authorities;
 	}
-
 	@Override
 	public String getPassword() {
 		return user.getPassword();

@@ -16,13 +16,6 @@ public class MyFilter3 implements Filter {
 		HttpServletRequest req = (HttpServletRequest) servletRequest;
 		HttpServletResponse res = (HttpServletResponse) servletResponse;
 
-		if (req.getMethod().equals("POST")) {
-			System.out.println("POST 요청됨");
-			String headerAuth = req.getHeader("Authorization");
-			System.out.println(headerAuth);
-		}
-
-
 		System.out.println("필터3");
 		filterChain.doFilter(servletRequest, servletResponse);
 	}

@@ -22,9 +22,9 @@ public class PrincipalDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("@@loadUserByUsername");
 		User userEntity = userRepository.findByUsername(username);
+		System.out.println("@@loadUserByUsername: "+userEntity);
 
-		return new PrincipalDetail(userEntity);
+		return new PrincipalDetails(userEntity);
 	}
 }
